@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { useState } from 'react'
 
 function Navbar() {
@@ -10,15 +11,15 @@ function Navbar() {
 
 				<div className="flex flex-1 justify-end items-center">
 					<div className="hidden xl:flex gap-10 text-taupe-200 font-medium text-xs tracking-widest">
-						<a href="#" className="hover:text-white text-3xl transition-colors">
+						<Link to="/" className="hover:text-white text-3xl transition-colors">
 							Home
-						</a>
-						<a href="#" className="hover:text-white text-3xl transition-colors">
+						</Link>
+						<Link to="#" className="hover:text-white text-3xl transition-colors">
 							Login
-						</a>
-						<a href="#" className="hover:text-white text-3xl transition-colors">
+						</Link>
+						<Link to="/register" className="hover:text-white text-3xl transition-colors">
 							Register
-						</a>
+						</Link>
 					</div>
 
 					<button
@@ -31,24 +32,24 @@ function Navbar() {
 
 			{isOpen && (
 				<div className="fixed inset-0 bg-neutral-900 z-40 xl:hidden flex flex-col items-center justify-center space-y-8 text-taupe-200 animate-in fade-in zoom-in-95 duration-300">
-					<a
-						href="#"
+					<Link
+						to="/"
 						onClick={() => setIsOpen(false)}
 						className="text-3xl font-light tracking-widest my-18 hover:text-white">
 						Home
-					</a>
-					<a
-						href="#"
+					</Link>
+					<Link
+						to="#"
 						onClick={() => setIsOpen(false)}
 						className="text-3xl font-light tracking-widest my-18 hover:text-white">
 						Login
-					</a>
-					<a
-						href="#"
+					</Link>
+					<Link
+						to="/register"
 						onClick={() => setIsOpen(false)}
 						className="text-3xl font-light tracking-widest my-18 hover:text-white">
 						Register
-					</a>
+					</Link>
 				</div>
 			)}
 		</nav>
