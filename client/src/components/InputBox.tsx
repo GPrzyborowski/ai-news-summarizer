@@ -15,7 +15,7 @@ function InputBox({ htmlFor, labelText, type, id, value, onChange }: InputBoxPro
 			<label htmlFor={htmlFor} className="block my-3 text-2xl">
 				{labelText}
 			</label>
-			<input type={type} id={id} className="border border-taupe-200 p-2 text-2xl mb-10" value={value} onChange={onChange} />
+			<input type={type} id={id} className="border border-taupe-200 p-2 text-2xl mb-10 focus:outline-none" value={value} onChange={onChange} />
 		</div>
 	)
 }
