@@ -33,7 +33,7 @@ function RegisterForm() {
 				onChange={e => setPassword(e.target.value)}
 			/>
 			<div className='flex justify-center'>
-				<button type="submit" className="border border-taupe-200 mt-10 px-8 py-4 cursor-pointer text-2xl">
+				<button type="submit" className="border border-taupe-200 mt-10 px-8 py-4 cursor-pointer text-2xl hover:text-[#242424] hover:bg-taupe-200 duration-100 ease-in">
 					Register
 				</button>
 			</div>
