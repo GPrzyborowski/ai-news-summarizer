@@ -1,13 +1,13 @@
 import type { ReactNode } from "react"
 
 type HeaderProps = {
-  children: ReactNode
+  content: ReactNode
 }
 
-function Header({children}: HeaderProps) {
+function Header({content}: HeaderProps) {
     return (
         <header>
-            <h1 className="text-taupe-200 text-center font-bold text-5xl ">{children}</h1>
+            <h1 className="text-taupe-200 text-center font-bold text-5xl ">{content}</h1>
         </header>
     )
 }
