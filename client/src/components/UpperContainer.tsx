@@ -1,19 +1,17 @@
 import Navbar from '../components/Navbar'
 import Header from '../components/Header'
-import type { ReactNode } from 'react'
 
 type UpperContainerProps = {
-	children: ReactNode
+	title: string
 }
 
-function UpperContainer({ children }: UpperContainerProps) {
+function UpperContainer({ title }: UpperContainerProps) {
 	return (
-		<div className="min-h-screen">
+		<div className="w-full">
 			<Navbar />
-			<div className="grid grid-cols-12 gap-6 p-6">
-				<div className="col-span-12">
-					<Header content={children} />
-				</div>
+
+			<div className="flex justify-center mt-4">
+				<Header content={title} />
 			</div>
 		</div>
 	)
