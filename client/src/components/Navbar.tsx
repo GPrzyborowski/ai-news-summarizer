@@ -35,19 +35,19 @@ function Navbar() {
 					<Link
 						to="/"
 						onClick={() => setIsOpen(false)}
-						className="text-3xl font-light tracking-widest my-18 hover:text-white">
+						className="text-3xl sm:text-4xl font-light tracking-widest my-18 hover:text-white">
 						Home
 					</Link>
 					<Link
 						to="/login"
 						onClick={() => setIsOpen(false)}
-						className="text-3xl font-light tracking-widest my-18 hover:text-white">
+						className="text-3xl sm:text-4xl font-light tracking-widest my-18 hover:text-white">
 						Login
 					</Link>
 					<Link
 						to="/register"
 						onClick={() => setIsOpen(false)}
-						className="text-3xl font-light tracking-widest my-18 hover:text-white">
+						className="text-3xl sm:text-4xl font-light tracking-widest my-18 hover:text-white">
 						Register
 					</Link>
 				</div>
