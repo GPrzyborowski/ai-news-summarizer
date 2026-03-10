@@ -12,6 +12,9 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "username", unique = false, length = 50)
+    private String username;
+
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
@@ -23,13 +26,18 @@ public class AppUser {
 
     public AppUser() {}
 
-    public AppUser(String email, String passwordHash) {
+    public AppUser(String username, String email, String passwordHash) {
+        this.username = username;
         this.email = email;
         this.passwordHash = passwordHash;
     }
 
     public Long getId(){
         return this.id;
+    }
+
+    public String getUsername() {
+        return this.username;
     }
 
     public String getEmail() {
@@ -44,6 +52,10 @@ public class AppUser {
         return this.createdAt;
     }
     
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
