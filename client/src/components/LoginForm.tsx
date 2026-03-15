@@ -21,11 +21,12 @@ function LoginForm() {
 				password: password,
 			}),
 		})
+		const data = await res.json()
 		if (!res.ok) {
-			const data = await res.json()
 			console.log(data.message)
 			return
 		}
+		localStorage.setItem('token', data.token)
 		navigate('/')
 	}
 
