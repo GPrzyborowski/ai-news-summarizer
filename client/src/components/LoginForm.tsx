@@ -13,21 +13,25 @@ function LoginForm() {
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		const res = await fetch(LOGIN_ENDPOINT, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				email: email,
-				password: password,
-			}),
-		})
-		const data = await res.json()
-		if (!res.ok) {
-			console.log(data.message)
-			return
+		try {
+			const res = await fetch(LOGIN_ENDPOINT, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					email: email,
+					password: password,
+				}),
+			})
+			const data = await res.json()
+			if (!res.ok) {
+				console.log(data.message)
+				return
+			}
+			localStorage.setItem('token', data.token)
+			navigate('/')
+		} catch (err) {
+			console.error(err)
 		}
-		localStorage.setItem('token', data.token)
-		navigate('/')
 	}
 
 	return (
