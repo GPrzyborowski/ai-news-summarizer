@@ -2,6 +2,8 @@ package com.github.krzsta.server.user;
 
 public record LoginResponse (
 
-    String message
+    String token,
+    String username,
+    String email
     
 ) {}

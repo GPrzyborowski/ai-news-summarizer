@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 public class AppUser {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username", nullable = false, length = 50)

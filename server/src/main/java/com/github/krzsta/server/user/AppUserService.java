@@ -9,10 +9,12 @@ public class AppUserService {
 
     private final AppUserRepository appUserRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
-    public AppUserService(AppUserRepository appUserRepository, PasswordEncoder passwordEncoder) {
+    public AppUserService(AppUserRepository appUserRepository, PasswordEncoder passwordEncoder, JwtService jwtService) {
         this.appUserRepository = appUserRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
     }
 
     public RegisterResponse register(RegisterRequest request) {
@@ -44,8 +46,13 @@ public class AppUserService {
 
         if (passwordEncoder.matches(request.password(), user.getPasswordHash())) {
 
+            String token = jwtService.generateToken(request.email());
+
             return new LoginResponse(
-                    "Login successful.");
+                token,
+                user.getUsername(),
+                user.getEmail()    
+            );
 
         } else {
 
