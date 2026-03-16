@@ -28,14 +28,17 @@ function LoginForm() {
 				const text = await res.text()
 				try {
 					const data = JSON.parse(text)
-					setError(data.message || 'Registration failed')
+					setError(data.message || 'Login failed')
 				} catch {
-					setError(text || 'Registration failed')
+					setError(text || 'Login failed')
 				}
 				return
 			}
 
-			navigate('/login')
+			const data = await res.json()
+
+			localStorage.setItem('token', data.token)
+			navigate('/')
 		} catch (err) {
 			setError('Login failed')
 		}
@@ -66,7 +69,7 @@ function LoginForm() {
 					Login
 				</button>
 			</div>
-			<p className='mt-12 text-center text-xl text-red-500'>{error}</p>
+			<p className="mt-12 text-center text-xl text-red-500">{error}</p>
 		</form>
 	)
 }
