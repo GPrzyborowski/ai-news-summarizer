@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 function LoginForm() {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [error, setError] = useState('')
 
 	const navigate = useNavigate()
 
@@ -22,15 +23,24 @@ function LoginForm() {
 					password: password,
 				}),
 			})
-			const data = await res.json()
+
 			if (!res.ok) {
-				console.log(data.message)
+				const text = await res.text()
+				try {
+					const data = JSON.parse(text)
+					setError(data.message || 'Login failed')
+				} catch {
+					setError(text || 'Login failed')
+				}
 				return
 			}
+
+			const data = await res.json()
+
 			localStorage.setItem('token', data.token)
 			navigate('/')
 		} catch (err) {
-			console.error(err)
+			setError('Login failed')
 		}
 	}
 
@@ -59,6 +69,7 @@ function LoginForm() {
 					Login
 				</button>
 			</div>
+			<p className="mt-12 text-center text-xl text-red-500">{error}</p>
 		</form>
 	)
 }
