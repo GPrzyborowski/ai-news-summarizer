@@ -2,6 +2,8 @@ package com.github.krzsta.server.controller;
 
 import com.github.krzsta.server.dto.RegisterRequest;
 import com.github.krzsta.server.dto.RegisterResponse;
+import com.github.krzsta.server.dto.LoginRequest;
+import com.github.krzsta.server.dto.LoginResponse;
 import com.github.krzsta.server.model.AppUser;
 import com.github.krzsta.server.service.UserService;
 
@@ -37,5 +39,11 @@ public class AuthController {
         );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest req) {
+        LoginResponse response = userService.login(req);
+        return ResponseEntity.ok(response);
     }
 }
