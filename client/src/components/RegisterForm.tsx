@@ -33,11 +33,16 @@ function RegisterForm({ login, setLogin, password, setPassword, email, setEmail 
 			}),
 		})
 		if (!res.ok) {
-			const data = await res.json()
-			setError(data.message)
+			const text = await res.text()
+			try {
+				const data = JSON.parse(text)
+				setError(data.message || 'Registration failed')
+			} catch {
+				setError(text || 'Registration failed')
+			}
 			return
 		}
-		navigate("/login")
+		navigate('/login')
 	}
 
 	return (
