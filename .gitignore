@@ -1,3 +1,5 @@
 .vscode
 server/env-local.sh
 .env
+docker-compose.yml
+Dockerfile
